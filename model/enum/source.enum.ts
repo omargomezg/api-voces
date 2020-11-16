@@ -1,28 +1,16 @@
 /**
  * Enum for set source for sites tuvoz group
  */
-export enum SourceEnum {
-    PAILLACO,
-    TU_VOZ
-}
+export enum SourceEnum {PAILLACO,TU_VOZ}
 
  export namespace SourceEnum {
 
-    export function getDbName(source: SourceEnum): string {
-        let dbName = '';
-        switch (source) {
-            case SourceEnum.PAILLACO:
-                dbName = 'paillaco';
-                break;
-            default:
-                dbName = 'tu_voz';
+    export function getDbName(source: number): string {
+        let dbName = 'wp_tuvoz';
+        if (source === SourceEnum.PAILLACO) {
+            dbName = 'paillaco';
         }
         return dbName;
-    }
-
-    export function parse(val: any): SourceEnum {
-        // @ts-ignore
-        return SourceEnum[val];
     }
 }
 

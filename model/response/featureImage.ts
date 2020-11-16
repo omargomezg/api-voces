@@ -1,4 +1,4 @@
-export class Attachment {
+export class FeatureImage {
     post_title: string;
     guid: string;
 

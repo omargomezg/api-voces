@@ -1,15 +1,15 @@
 import {Category} from "./category";
 import {Content} from "./content";
-import {Attachment} from "./attachment";
+import {FeatureImage} from "./featureImage";
 
 export class Post extends Content {
     post_content: string;
     categories: Category[] = [];
-    attachments: Attachment[];
+    featureImage: FeatureImage;
 
     constructor() {
         super();
         this.post_content = '';
-        this.attachments = [];
+        this.featureImage = new FeatureImage();
     }
 }

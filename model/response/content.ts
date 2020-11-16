@@ -1,13 +1,19 @@
+import {Author} from "./author";
+
 export abstract class Content {
-    ID: number;
-    post_date_gmt: Date;
-    post_title: string;
-    post_name: string;
+    id: number;
+    published: Date;
+    updated: Date;
+    title: string;
+    name: string;
+    author: Author;
 
     protected constructor() {
-        this.ID = 0;
-        this.post_date_gmt = new Date();
-        this.post_title = '';
-        this.post_name = '';
+        this.id = 0;
+        this.published = new Date();
+        this.updated = new Date();
+        this.title = '';
+        this.name = '';
+        this.author = new Author();
     }
 }
