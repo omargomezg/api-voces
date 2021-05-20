@@ -45,7 +45,7 @@ export class DbService {
         const params = ['publish', 'post'];
         let {limit, post_name} = request.query;
         if (post_name !== undefined) {
-            post_name = `and post_name = '${post_name}'`;
+            post_name = `and wp.post_name = '${post_name}'`;
         } else {
             post_name = ''
         }
@@ -58,15 +58,11 @@ export class DbService {
                                              from wp_posts wp
                                              where wp.post_status = ?
                                                and wp.post_type = ? ${post_name}
-                                             order by wp.post_date DESC limit ${limit};`,
-            params);
+                                             order by wp.post_date DESC limit ${limit};`, params);
         return result as Post[];
     }
 
     async getPostByCategories(source: number, limit: string, categories: Array<string>): Promise<Post[]> {
-        const params = ['publish', 'post'];
-        params.push(categories.toString());
-        params.push(limit);
         const result = await this.execQuery(source, `select wp.ID id,
                                                     wp.post_date_gmt published,
                                                     wp.post_modified_gmt updated,
